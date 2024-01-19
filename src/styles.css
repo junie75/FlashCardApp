@@ -4,10 +4,15 @@ body {
   display: flex;
   place-items: center;
   justify-content: center;
+  user-select: none;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .title {
   text-align: center;
+  color: white;
+  font-size: 65px;
+  margin-top: 0px;
 }
 
 .cardDeck {
@@ -26,6 +31,50 @@ body {
   box-shadow: 1px 1px 3px;
 }
 
+.flashCard:active {
+}
+
 .cardTerm {
   font-size: 300%;
+}
+
+.move {
+  display: flex;
+  justify-content: space-between;
+}
+
+.move button {
+  border-radius: 10%;
+  margin: 20px;
+  padding: 20px;
+  font-size: 25px;
+  justify-content: center;
+  align-items: center;
+  width: 130px;
+  height: 80px;
+  border: none;
+  background-color: rebeccapurple;
+  color: white;
+  box-shadow: 1px 1px 3px black;
+  transition: transform 0.15s;
+}
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 10px lavenderblush; /* Initial shadow color (green in this example) */
+  }
+  50% {
+    box-shadow: 0 0 20px plum; /* Intermediate shadow color */
+  }
+  100% {
+    box-shadow: 0 0 10px lavenderblush; /* Final shadow color */
+  }
+}
+
+.move button:hover {
+  /*animation: glow 1s infinite;*/
+  box-shadow: 0 0 10px lavenderblush;
+}
+
+.move button:active {
+  transform: translateY(-3px);
 }

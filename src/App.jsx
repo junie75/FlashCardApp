@@ -1,41 +1,51 @@
-import "./styles.css";
 import { useState } from "react";
+import Header from "./Header";
+import CardDeck from "./CardDeck";
 
-[currentCard, setCurrentCard] = useState(0);
-[side, setSide] = useState("definition");
-
-//flashcard object
-var card = {
-  term: String,
-  definition: String,
-};
-
-//array of flashcard
-let cardDeck = [
-  { term: "finir", definition: "to finish" },
-  { term: "venir", definition: "to come" },
-];
-
-/*function flipCard() {
-  side === term ? setSide(definition) : setSide(term);
-}*/
-
-function showCard() {
-  return side === "term"
-    ? cardDeck[currentCard].term
-    : cardDeck[currentCard].definition;
-}
 function App() {
+  const [currentCard, setCurrentCard] = useState(0);
+  const [side, setSide] = useState("term");
+
+  //flashcard object
+  // var card = {
+  //   term: String,
+  //   definition: String,
+  // };
+
+  //array of flashcard
+  const cardDeck = [
+    { term: "finir", definition: "to finish" },
+    { term: "venir", definition: "to come" },
+  ];
+
+  const flipCard = () => {
+    side === "term" ? setSide("definition") : setSide("term");
+  };
+
+  const showCard = () => {
+    return side === "term"
+      ? cardDeck[currentCard].term
+      : cardDeck[currentCard].definition;
+  };
+
+  const nextCard = (direction) => {
+    if (
+      currentCard + direction >= 0 &&
+      currentCard + direction < cardDeck.length
+    )
+      setCurrentCard(currentCard + direction);
+    console.log(currentCard);
+  };
+
   return (
     <>
       <div>
-        <h1 className="title">FlashCards</h1>
-        <div className="cardDeck">
-          <div className="flashCard" /*onClick={flipCard()}*/>
-            <p className="cardTerm">{() => showCard()}</p>
-            {/*<p className="cardDef">To Finish</p>*/}
-          </div>
-        </div>
+        <Header></Header>
+        <CardDeck
+          nextCard={nextCard}
+          showCard={showCard}
+          flipCard={flipCard}
+        ></CardDeck>
       </div>
     </>
   );
