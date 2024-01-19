@@ -1,53 +1,41 @@
-import { useState } from "react";
 import Header from "./Header";
-import CardDeck from "./CardDeck";
+import { useState } from "react";
+import HomePage from "./HomePage";
+import StudyPage from "./StudyPage";
 
 function App() {
-  const [currentCard, setCurrentCard] = useState(0);
-  const [side, setSide] = useState("term");
+  const [text, setText] = useState("");
 
-  //flashcard object
-  // var card = {
-  //   term: String,
-  //   definition: String,
-  // };
-
-  //array of flashcard
-  const cardDeck = [
-    { term: "finir", definition: "to finish" },
-    { term: "venir", definition: "to come" },
-  ];
-
-  const flipCard = () => {
-    side === "term" ? setSide("definition") : setSide("term");
+  const handleChange = (e) => {
+    // console.log(e.target.value);
+    setText(e.target.value);
   };
 
-  const showCard = () => {
-    return side === "term"
-      ? cardDeck[currentCard].term
-      : cardDeck[currentCard].definition;
+  const handleSubmit = () => {
+    console.log(text);
   };
-
-  const nextCard = (direction) => {
-    if (
-      currentCard + direction >= 0 &&
-      currentCard + direction < cardDeck.length
-    )
-      setCurrentCard(currentCard + direction);
-    console.log(currentCard);
-  };
-
   return (
-    <>
-      <div>
-        <Header></Header>
-        <CardDeck
-          nextCard={nextCard}
-          showCard={showCard}
-          flipCard={flipCard}
-        ></CardDeck>
+    // <StudyPage></StudyPage>
+    <div>
+      <Header title="Create New Deck" />
+      {/* <form className="newDeckForm"> */}
+      <div className="formRow">
+        <label htmlFor="largeTextArea">
+          Copy and Paste your Terms and definitions!
+        </label>
+        <textarea
+          id="largeTextArea"
+          value={text}
+          onChange={handleChange}
+          rows={20} // Set the number of visible rows
+          cols={25} // Set the number of visible columns
+        />
+        <button onClick={handleSubmit} className="move">
+          Submit
+        </button>
       </div>
-    </>
+      {/* </form> */}
+    </div>
   );
 }
 

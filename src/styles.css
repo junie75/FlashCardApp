@@ -4,15 +4,36 @@ body {
   display: flex;
   place-items: center;
   justify-content: center;
+  align-items: center;
   user-select: none;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
+.container {
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+}
+
 .title {
+  display: flex;
   text-align: center;
+  /* justify-content: center; */
+  /* align-items: center; */
   color: white;
   font-size: 65px;
   margin-top: 0px;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.move.choices button {
+  /* justify-content: center;
+  align-items: center; */
+  background-color: white;
+  color: black;
+  width: 200px;
+  height: 200px;
 }
 
 .cardDeck {
@@ -77,4 +98,25 @@ body {
 
 .move button:active {
   transform: translateY(-3px);
+}
+
+.newDeckForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.formRow {
+  /* margin-top: 30px; */
+  display: flex;
+  flex-direction: column;
+}
+
+.formRow label {
+  color: aliceblue;
+  font-size: 20px;
+  margin: 12px;
+}
+
+#largeTextArea {
+  border-radius: 2%;
 }

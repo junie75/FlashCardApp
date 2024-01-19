@@ -1,5 +1,5 @@
-function Header() {
-  return <h1 className="title">FlashCards</h1>;
+function Header({ title }) {
+  return <h1 className="title">{title}</h1>;
 }
 
 export default Header;

@@ -1,33 +1,35 @@
-function CardDeck({ nextCard, showCard, flipCard }) {
-  //   const [currentCard, setCurrentCard] = useState(0);
-  //   const [side, setSide] = useState("term");
+import { useState } from "react";
+import FlashCard from "./FlashCard";
+import MoveButton from "./MoveButtons";
 
-  //   const flipCard = () => {
-  //     side === "term" ? setSide("definition") : setSide("term");
-  //   };
+function CardDeck({ deck }) {
+  const [currentCard, setCurrentCard] = useState(0); //tracks what card currently studying
+  const [side, setSide] = useState("term"); //tracks which side of the card is being studied
 
-  //   const showCard = () => {
-  //     return side === "term"
-  //       ? deck[currentCard].term
-  //       : deck[currentCard].definition;
-  //   };
+  //flips the card to the other side
+  const flipCard = () => {
+    side === "term" ? setSide("definition") : setSide("term");
+  };
 
-  //   const nextCard = (direction) => {
-  //     if (currentCard + direction >= 0 && currentCard + direction < deck.length)
-  //       setCurrentCard(currentCard + direction);
-  //     //console.log(currentCard);
-  //   };
+  //shows the term or the definition on the card
+  const showCard = () => {
+    return side === "term"
+      ? deck[currentCard].term
+      : deck[currentCard].definition;
+  };
+
+  //flips to the next card in the deck
+  const nextCard = (direction) => {
+    //flips card back to the term side before going to the next card
+    if (side != "term") setSide("term");
+    //moves the card deck forward or backwards based on which button is pressed
+    if (currentCard + direction >= 0 && currentCard + direction < deck.length)
+      setCurrentCard(currentCard + direction);
+  };
   return (
     <div className="cardDeck">
-      <div className="flashCard" onClick={() => flipCard()}>
-        <p className="cardTerm">{showCard()}</p>
-        {/*<p className="cardDef">To Finish</p>*/}
-      </div>
-
-      <div className="move">
-        <button onClick={() => nextCard(-1)}>previous</button>
-        <button onClick={() => nextCard(1)}>next</button>
-      </div>
+      <FlashCard flipCard={flipCard} showCard={showCard} />
+      <MoveButton nextCard={nextCard} />
     </div>
   );
 }
