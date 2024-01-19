@@ -1,8 +1,5 @@
-# React + Vite
+# FlashCardApp
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Flash Card App is a web application, originally inspired by my desire to study french with flash cards. In this website, the user will be able to create and store 
+multiple flash card decks, and then have the option to study the decks flash card style. This application is a project meant to sharpen my skills in javascript, html, 
+and css/bootstrap css. **Note: project is currently unfinished and in progress**
